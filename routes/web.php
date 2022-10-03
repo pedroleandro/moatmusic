@@ -30,3 +30,4 @@ Route::put('/role/{role}/permissions/sync', [\App\Http\Controllers\RoleControlle
 Route::resource('role', \App\Http\Controllers\RoleController::class);
 
 Route::resource('permission', \App\Http\Controllers\PermissionController::class);
+Route::resource('album', \App\Http\Controllers\AlbumController::class);
