@@ -14,7 +14,7 @@
                             </div>
                         @endif
 
-                        <a class="text-success" href="{{ route('user.create') }}">&plus; Register New User</a>
+                        <a class="text-success" href="{{ route('permission.create') }}">&plus; Register New Permission</a>
 
                         @if($errors)
                             @foreach($errors->all() as $error)
@@ -28,22 +28,22 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>User</th>
-                                <th>Action</th>
+                                <th>Permission</th>
+                                <th>Actions</th>
                             </tr>
                             </thead>
                             <tbody>
 
-                            @foreach($users as $user)
+                            @foreach($permissions as $permission)
                                 <tr>
-                                    <td>{{ $user->id }}</td>
-                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $permission->id }}</td>
+                                    <td>{{ $permission->name }}</td>
                                     <td class="d-flex">
                                         <a class="mr-3 btn btn-sm btn-outline-success"
-                                           href="{{ route('user.edit', ['user' => $user->id]) }}">Edit</a>
-                                        <a class="mr-3 btn btn-sm btn-outline-info"
-                                           href="{{ route('user.roles', ['user' => $user->id]) }}">Profiles</a>
-                                        <form action="{{ route('user.destroy', ['user' => $user->id]) }}" method="post">
+                                           href="{{ route('permission.edit', ['permission' => $permission->id]) }}">Edit</a>
+                                        <form
+                                            action="{{ route('permission.destroy', ['permission' => $permission->id]) }}"
+                                            method="post">
                                             @csrf
                                             @method('delete')
                                             <input class="btn btn-sm btn-outline-danger" type="submit" value="Remove">
