@@ -17,6 +17,20 @@
                     {{ __('You are logged in!') }}
                 </div>
             </div>
+
+            <br>
+
+            <div class="card">
+                <div class="card-header">{{ __('Artists') }}</div>
+
+                <div class="card-body">
+
+                    @foreach($artists as $artist)
+                        <p>{{ $artist['name'] }}</p>
+                    @endforeach
+
+                </div>
+            </div>
         </div>
     </div>
 </div>

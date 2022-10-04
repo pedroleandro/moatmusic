@@ -23,6 +23,26 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('home', [
+            "artists" => $this->artists()
+        ]);
+    }
+
+    private function artists(){
+        $response = (new \GuzzleHttp\Client)->get("https://europe-west1-madesimplegroup-151616.cloudfunctions.net/artists-api-controller", [
+            "headers" => [
+                "Authorization" => "Basic ZGV2ZWxvcGVyOlpHVjJaV3h2Y0dWeQ=="
+            ]
+        ]);
+
+        $listOfArtists = json_decode($response->getBody()->getContents(), true)['json'];
+
+        $artists = [];
+
+        foreach ($listOfArtists as $artist){
+            $artists[] = $artist[0];
+        }
+
+        return $artists;
     }
 }
