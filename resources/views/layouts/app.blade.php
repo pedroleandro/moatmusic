@@ -58,8 +58,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('user.index') }}">User Management</a>
                                     <a class="dropdown-item" href="{{ route('album.index') }}">Album Management</a>
+                                    <a class="dropdown-item" href="{{ route('user.index') }}">User Management</a>
                                     <a class="dropdown-item" href="{{ route('role.index') }}">Role Management</a>
                                     <a class="dropdown-item" href="{{ route('permission.index') }}">Permission Management</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
