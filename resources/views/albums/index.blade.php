@@ -40,13 +40,16 @@
                                     <td class="d-flex">
                                         <a class="mr-3 btn btn-sm btn-outline-success"
                                            href="{{ route('album.edit', ['album' => $album->id]) }}">Edit</a>
-                                        <form action="{{ route('album.destroy', ['album' => $album->id]) }}"
-                                              method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <input class="btn btn-sm btn-outline-danger" type="submit"
-                                                   value="Remove">
-                                        </form>
+
+                                        @can("Deletar Álbum")
+                                            <form action="{{ route('album.destroy', ['album' => $album->id]) }}"
+                                                  method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <input class="btn btn-sm btn-outline-danger" type="submit"
+                                                       value="Remove">
+                                            </form>
+                                        @endcan
                                     </td>
                                 </tr>
                             @endforeach

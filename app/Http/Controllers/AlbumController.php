@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Album;
 use Facade\FlareClient\Http\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\UnauthorizedException;
 
 class AlbumController extends Controller
 {
@@ -104,6 +106,10 @@ class AlbumController extends Controller
      */
     public function destroy($id)
     {
+        if(!Auth::user()->hasPermissionTo('Deletar Álbum')){
+            throw new UnauthorizedException("You do not have permission to remove this album", "403");
+        }
+
         $album = Album::where('id', $id)->first();
         if($album){
             $album->delete();
